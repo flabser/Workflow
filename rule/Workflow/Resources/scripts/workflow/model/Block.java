@@ -11,22 +11,29 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import kz.lof.dataengine.jpa.SecureAppEntity;
 import workflow.model.constants.ApprovalStatusType;
+import workflow.model.constants.ApprovalType;
 
 @Entity
-@Table(name = "approvals")
-@NamedQuery(name = "Approval.findAll", query = "SELECT m FROM Approval AS m ORDER BY m.regDate")
-public class Approval extends SecureAppEntity {
+@Table(name = "blocks")
+@NamedQuery(name = "Block.findAll", query = "SELECT m FROM Block AS m ORDER BY m.regDate")
+public class Block extends SecureAppEntity {
 
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = true, length = 10)
 	private ApprovalStatusType status = ApprovalStatusType.UNKNOWN;
 
-	@OneToMany()
-	private List<Block> blocks;
+	@OneToMany(mappedBy = "block", fetch = FetchType.EAGER)
+	private List<Approver> approvers;
+
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = true, length = 8, unique = true)
+	private ApprovalType type = ApprovalType.UNKNOWN;
+
 }

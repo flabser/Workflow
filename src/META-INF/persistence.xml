@@ -72,11 +72,7 @@
 		<class>reference.model.Tag</class>	
 		<class>reference.model.OrgCategory</class>
 		<!-- Specific Reference module entities -->
-		<class>reference.model.PropertyCode</class>	
-		<class>reference.model.BuildingMaterial</class>	
-		<class>reference.model.StructureType</class>
-		<class>reference.model.ReceivingReason</class>
-		<class>reference.model.Kuf</class>
+		<!-- There is no specific entities -->
 		<shared-cache-mode>NONE</shared-cache-mode>
 	</persistence-unit>	
 	
@@ -96,6 +92,32 @@
 		<class>reference.model.Position</class>	
 		<class>reference.model.DepartmentType</class>	
 		<class>reference.model.OrgCategory</class>
+		<shared-cache-mode>NONE</shared-cache-mode>
+	</persistence-unit>	
+	
+	<persistence-unit name="Workflow" transaction-type="RESOURCE_LOCAL">
+		<!-- Obligatory the application module entities -->
+		<class>kz.lof.administrator.model.User</class>
+		<class>kz.lof.administrator.model.Application</class>
+		<class>kz.lof.administrator.model.Language</class>
+		<class>kz.lof.administrator.model.Sentence</class>
+		<!-- Common Staff module entities -->		
+		<class>staff.model.Organization</class>
+		<class>staff.model.Department</class>
+		<class>staff.model.Employee</class>
+		<class>staff.model.Role</class>
+		<class>staff.model.OrganizationLabel</class>
+		<!-- Common Reference module entities -->
+		<class>reference.model.Position</class>	
+		<class>reference.model.DepartmentType</class>	
+		<class>reference.model.OrgCategory</class>
+		<!-- The application module entities -->
+		<class>workflow.model.Approval</class>	
+		<class>workflow.model.Approver</class>	
+		<class>workflow.model.Block</class>
+		<class>workflow.model.OfficeMemo</class>
+		<!-- Common module entities -->
+		<class>kz.lof.common.model.Attachment</class>	
 		<shared-cache-mode>NONE</shared-cache-mode>
 	</persistence-unit>	
 </persistence>
