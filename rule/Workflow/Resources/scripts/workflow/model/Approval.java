@@ -29,4 +29,5 @@ public class Approval extends SecureAppEntity {
 
 	@OneToMany()
 	private List<Block> blocks;
+
 }

@@ -40,4 +40,7 @@ public class Approver extends SecureAppEntity {
 	@ManyToOne(optional = true)
 	private Approval approval;
 
+	@Column(name = "time_limit")
+	private int timeLimit;
+
 }

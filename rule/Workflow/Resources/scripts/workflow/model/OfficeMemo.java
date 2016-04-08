@@ -43,6 +43,9 @@ public class OfficeMemo extends SecureAppEntity {
 	@JoinTable(name = "office_memo_attachments", joinColumns = { @JoinColumn(name = "office_memo_id", referencedColumnName = "id") }, inverseJoinColumns = { @JoinColumn(name = "attachment_id", referencedColumnName = "id") })
 	private List<Attachment> attachments = new ArrayList<>();
 
-	private String description = "";
+	@Column(nullable = false, length = 128)
+	private String summary = "";
+
+	private String content = "";
 
 }

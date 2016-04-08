@@ -36,4 +36,7 @@ public class Block extends SecureAppEntity {
 	@Column(nullable = true, length = 8, unique = true)
 	private ApprovalType type = ApprovalType.UNKNOWN;
 
+	@Column(name = "time_limit")
+	private int timeLimit;
+
 }
