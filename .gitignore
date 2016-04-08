@@ -8,14 +8,17 @@
 /backup/
 /indicators/
 /tmp/
+/rule/*/global.xml
+/rule/*/global.dat
 /webapps/*/reports/templates/*.jasper
 
 # Idea resources #
 ##################
 .idea
+cfg.xml
 *.iml
-/out/
-/.svn/
+/out/ 
+/.svn/ 
 # Logs #
 ########
 *.log
@@ -26,3 +29,4 @@
 /.project
 #
 node_modules/
+
