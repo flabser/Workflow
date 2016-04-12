@@ -36,11 +36,4 @@ public class Approver extends SecureAppEntity {
 	@ManyToOne(optional = false)
 	private Block block;
 
-	@NotNull
-	@ManyToOne(optional = true)
-	private Approval approval;
-
-	@Column(name = "time_limit")
-	private int timeLimit;
-
 }

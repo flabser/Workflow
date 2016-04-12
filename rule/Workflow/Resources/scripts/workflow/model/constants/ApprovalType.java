@@ -5,7 +5,7 @@ package workflow.model.constants;
  * @author Kayra created 07-04-2016
  */
 public enum ApprovalType {
-	UNKNOWN(0), SERIAL(45), PARALLEL(46);
+	UNKNOWN(0), SERIAL(45), PARALLEL(46), SIGNING(47);
 
 	private int code;
 
