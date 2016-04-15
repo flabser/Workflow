@@ -1,7 +1,7 @@
 package workflow.page.view;
 
-import kz.lof.scripting._Session;
-import kz.lof.scripting._WebFormData;
+import com.exponentus.scripting._Session;
+import com.exponentus.scripting._WebFormData;
 import kz.nextbase.script.actions._Action;
 import kz.nextbase.script.actions._ActionBar;
 import kz.nextbase.script.actions._ActionType;

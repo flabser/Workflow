@@ -16,7 +16,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import kz.lof.dataengine.jpa.SecureAppEntity;
+import com.exponentus.dataengine.jpa.SecureAppEntity;
 import workflow.model.constants.ApprovalStatusType;
 import workflow.model.constants.ApprovalType;
 

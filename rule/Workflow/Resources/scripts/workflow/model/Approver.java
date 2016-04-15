@@ -14,7 +14,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import kz.lof.dataengine.jpa.SecureAppEntity;
+import com.exponentus.dataengine.jpa.SecureAppEntity;
+
 import workflow.model.constants.DecisionType;
 
 @Entity

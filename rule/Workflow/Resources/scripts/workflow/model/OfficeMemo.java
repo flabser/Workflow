@@ -21,8 +21,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import kz.lof.common.model.Attachment;
-import kz.lof.dataengine.jpa.SecureAppEntity;
+import com.exponentus.common.model.Attachment;
+import com.exponentus.dataengine.jpa.SecureAppEntity;
 
 @Entity
 @Table(name = "office_memos")
