@@ -1,8 +1,8 @@
 package workflow.page.view;
 
-import kz.lof.scripting._Session;
-import kz.lof.scripting._WebFormData;
-import kz.lof.scripting.event._DoPage;
+import com.exponentus.scripting._Session;
+import com.exponentus.scripting._WebFormData;
+import com.exponentus.scripting.event._DoPage;
 
 public abstract class AbstractWorkflowView extends _DoPage {
 
