@@ -23,6 +23,8 @@ import javax.validation.constraints.NotNull;
 
 import com.exponentus.common.model.Attachment;
 import com.exponentus.dataengine.jpa.SecureAppEntity;
+import com.exponentus.scripting._Session;
+import kz.flabs.util.Util;
 
 @Entity
 @Table(name = "office_memos")
@@ -47,5 +49,17 @@ public class OfficeMemo extends SecureAppEntity {
 	private String summary = "";
 
 	private String content = "";
+
+	public List<Attachment> getAttachments() {
+		return attachments;
+	}
+
+	public void setContent(String briefContent) {
+		this.content = content;
+	}
+
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
 
 }

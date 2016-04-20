@@ -7,14 +7,7 @@ package workflow.model;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.exponentus.dataengine.jpa.SecureAppEntity;
 import workflow.model.constants.ApprovalStatusType;
@@ -39,7 +32,7 @@ public class Block extends SecureAppEntity {
 	@Column(name = "require_comment_if_no")
 	private boolean requireCommentIfNo;
 
-	@Column(name = "cur_approvers")
+	@JoinColumn(name = "cur_approvers")
 	private List<Approver> curApprovers;
 
 	@Column(name = "time_limit")
