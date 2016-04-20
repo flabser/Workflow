@@ -32,7 +32,7 @@ public class Block extends SecureAppEntity {
 	@Column(name = "require_comment_if_no")
 	private boolean requireCommentIfNo;
 
-	@JoinColumn(name = "cur_approvers")
+	@Column(name = "cur_approvers")
 	private List<Approver> curApprovers;
 
 	@Column(name = "time_limit")
