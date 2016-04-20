@@ -37,4 +37,7 @@ public class Approver extends SecureAppEntity {
 	@ManyToOne(optional = false)
 	private Block block;
 
+	@Column(name = "is_current")
+	private boolean isCurrent;
+
 }
