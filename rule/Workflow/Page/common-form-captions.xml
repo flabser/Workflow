@@ -2,6 +2,8 @@
 <rule type="page" mode="on">
     <caching>CACHING_IN_SERVER_SCOPE</caching>
 
+    <caption name="officememo"/>
+
     <caption name="notes"/>
     <caption name="body"/>
     <caption name="files"/>
@@ -17,7 +19,6 @@
     <caption name="reg_documents"/>
 
     <caption name="additional_info"/>
-
     <caption name="documents_of_title"/>
     <caption name="note"/>
 
@@ -26,6 +27,5 @@
     <caption name="active"/>
     <caption name="inactive"/>
     <caption name="summary">Краткое содержание</caption>
-    <caption name="content"/>
     <caption name="signer"/>
 </rule>
