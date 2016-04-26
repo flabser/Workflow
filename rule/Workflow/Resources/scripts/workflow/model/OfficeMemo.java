@@ -24,7 +24,7 @@ import javax.validation.constraints.NotNull;
 import com.exponentus.common.model.Attachment;
 import com.exponentus.dataengine.jpa.SecureAppEntity;
 import com.exponentus.scripting._Session;
-import kz.flabs.util.Util;
+import com.exponentus.util.Util;
 
 @Entity
 @Table(name = "office_memos")
