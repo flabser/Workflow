@@ -2,9 +2,10 @@ package workflow.page.view;
 
 import com.exponentus.scripting._Session;
 import com.exponentus.scripting._WebFormData;
-import kz.nextbase.script.actions._Action;
-import kz.nextbase.script.actions._ActionBar;
-import kz.nextbase.script.actions._ActionType;
+import com.exponentus.scripting.actions._Action;
+import com.exponentus.scripting.actions._ActionBar;
+import com.exponentus.scripting.actions._ActionType;
+
 import workflow.dao.OfficeMemoDAO;
 
 public class OfficeMemoView extends AbstractWorkflowView {
