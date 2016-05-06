@@ -26,9 +26,9 @@ import com.exponentus.dataengine.jpa.SecureAppEntity;
 import staff.model.Organization;
 
 @Entity
-@Table(name = "incomings")
-@NamedQuery(name = "Incoming.findAll", query = "SELECT m FROM Incoming AS m ORDER BY m.regDate")
-public class Incoming extends SecureAppEntity<UUID> {
+@Table(name = "outgoings")
+@NamedQuery(name = "Outgoing.findAll", query = "SELECT m FROM Outgoing AS m ORDER BY m.regDate")
+public class Outgoing extends SecureAppEntity<UUID> {
 
 	@Column(name = "reg_number")
 	private String regNumber;
@@ -37,17 +37,11 @@ public class Incoming extends SecureAppEntity<UUID> {
 	private Date appliedRegDate;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinTable(name = "incoming_attachments", joinColumns = { @JoinColumn(name = "incoming_id", referencedColumnName = "id") }, inverseJoinColumns = {
+	@JoinTable(name = "outgoing_attachments", joinColumns = { @JoinColumn(name = "outgoing_id", referencedColumnName = "id") }, inverseJoinColumns = {
 	        @JoinColumn(name = "attachment_id", referencedColumnName = "id") })
 	private List<Attachment> attachments = new ArrayList<>();
 
-	private Organization sender;
-
-	@Column(name = "sender_reg_number")
-	private String senderRegNumber;
-
-	@Column(name = "sender_applied_reg_date")
-	private Date senderAppliedRegDate;
+	private Organization recipient;
 
 	@Column(nullable = false)
 	private String summary = "";

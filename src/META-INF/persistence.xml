@@ -116,6 +116,8 @@
 		<class>workflow.model.Approver</class>	
 		<class>workflow.model.Block</class>
 		<class>workflow.model.OfficeMemo</class>
+		<class>workflow.model.Incoming</class>
+		<class>workflow.model.Outgoing</class>
 		<!-- Common module entities -->
 		<class>com.exponentus.common.model.Attachment</class>	
 		<shared-cache-mode>NONE</shared-cache-mode>
