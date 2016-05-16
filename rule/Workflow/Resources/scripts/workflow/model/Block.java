@@ -6,6 +6,7 @@ package workflow.model;
  */
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,7 +25,7 @@ import workflow.model.constants.ApprovalType;
 @Entity
 @Table(name = "blocks")
 @NamedQuery(name = "Block.findAll", query = "SELECT m FROM Block AS m ORDER BY m.regDate")
-public class Block extends SecureAppEntity {
+public class Block extends SecureAppEntity<UUID> {
 
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = true, length = 10)

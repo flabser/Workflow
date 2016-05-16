@@ -1,5 +1,7 @@
 package workflow.model;
 
+import java.util.UUID;
+
 /**
  * 
  * @author Kayra created 07-04-2016
@@ -21,7 +23,7 @@ import workflow.model.constants.DecisionType;
 @Entity
 @Table(name = "approvers")
 @NamedQuery(name = "Approver.findAll", query = "SELECT m FROM Approver AS m ORDER BY m.regDate")
-public class Approver extends SecureAppEntity {
+public class Approver extends SecureAppEntity<UUID> {
 
 	@Column(name = "approver_user", nullable = false, updatable = false)
 	protected Long approverUser;
