@@ -4,6 +4,26 @@
         <entry lang="RUS">Служебные записки</entry>
         <entry lang="ENG">Officememo</entry>
     </sentence>
+    <sentence mode="on" keyword="incoming_documents">
+        <entry lang="RUS">Входящие документы</entry>
+        <entry lang="ENG">Incoming documents</entry>
+    </sentence>
+    <sentence mode="on" keyword="outgoing_documents">
+        <entry lang="RUS">Исходящие документы</entry>
+        <entry lang="ENG">Outgoing documents</entry>
+    </sentence>
+    <sentence mode="on" keyword="incoming">
+        <entry lang="RUS">Входящий документ</entry>
+        <entry lang="ENG">Incoming document</entry>
+    </sentence>
+    <sentence mode="on" keyword="outgoing">
+        <entry lang="RUS">Исходящий документ</entry>
+        <entry lang="ENG">Outgoing document</entry>
+    </sentence>
+    <sentence mode="on" keyword="outgoing">
+        <entry lang="RUS">Исходящий документ</entry>
+        <entry lang="ENG">Outgoing document</entry>
+    </sentence>
     <sentence mode="on" keyword="signer">
         <entry lang="RUS">Подписывающий</entry>
         <entry lang="ENG">Signer</entry>

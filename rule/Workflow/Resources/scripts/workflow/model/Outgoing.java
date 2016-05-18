@@ -46,4 +46,12 @@ public class Outgoing extends SecureAppEntity<UUID> {
 	@Column(nullable = false)
 	private String summary = "";
 
+	public List<Attachment> getAttachments() {
+		return attachments;
+	}
+
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
+
 }

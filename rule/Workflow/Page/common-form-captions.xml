@@ -28,4 +28,6 @@
     <caption name="inactive"/>
     <caption name="summary">Краткое содержание</caption>
     <caption name="signer"/>
+    <caption name="incoming"/>
+    <caption name="outgoing"/>
 </rule>
