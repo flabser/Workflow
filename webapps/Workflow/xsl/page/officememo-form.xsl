@@ -32,38 +32,10 @@
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="tabs-1">
                         <fieldset class="fieldset">
-                            <div class="form-group">
-                                <div class="control-label">
-                                    <xsl:value-of select="//captions/reg_number/@caption"/>
-                                </div>
-                                <div class="controls">
-                                    <input type="text" name="type" value="{fields/regnumber}" class="span2"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="control-label">
-                                    <xsl:value-of select="//captions/reg_date/@caption"/>
-                                </div>
-                                <div class="controls">
-                                    <input type="text" name="type" value="{fields/regdate}" class="span2"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="control-label">
-                                    <xsl:value-of select="//captions/signer/@caption"/>
-                                </div>
-                                <div class="controls">
-                                    <input type="text" name="type" value="{fields/signer}" class="span4"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="control-label">
-                                    <xsl:value-of select="//captions/recipient/@caption"/>
-                                </div>
-                                <div class="controls">
-                                    <input type="text" name="type" value="{fields/recipient}" class="span4"/>
-                                </div>
-                            </div>
+                            <xsl:call-template name="regnumber"/>
+                            <xsl:call-template name="regdate"/>
+                            <xsl:call-template name="signer"/>
+                            <xsl:call-template name="recipient"/>
                             <div class="form-group">
                                 <div class="control-label">
                                     <xsl:value-of select="//captions/summary/@caption"/>

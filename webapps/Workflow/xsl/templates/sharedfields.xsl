@@ -51,6 +51,58 @@
         </div>
     </xsl:template>
 
+    <xsl:template name="signer">
+        <!-- Подписывающий  -->
+        <div class="form-group">
+            <div class="control-label">
+                <xsl:value-of select="//captions/signer/@caption"/>
+            </div>
+            <div class="controls">
+                <select name="signer" class="span6">
+                    <xsl:apply-templates select="fields/signer" mode="selected_options"/>
+                </select>
+            </div>
+        </div>
+    </xsl:template>
+
+    <xsl:template name="recipient">
+        <!-- Получатель  -->
+        <div class="form-group">
+            <div class="control-label">
+                <xsl:value-of select="//captions/recipient/@caption"/>
+            </div>
+            <div class="controls">
+                <select name="recipient" class="span6">
+                    <xsl:apply-templates select="fields/recipient" mode="selected_options"/>
+                </select>
+            </div>
+        </div>
+    </xsl:template>
+
+    <xsl:template name="regnumber">
+        <!-- Регистрационный номер  -->
+        <div class="form-group">
+            <div class="control-label">
+                <xsl:value-of select="//captions/reg_number/@caption"/>
+            </div>
+            <div class="controls">
+                <input type="text" name="type" value="{fields/regnumber}" class="span2"/>
+            </div>
+        </div>
+    </xsl:template>
+
+    <xsl:template name="regdate">
+        <!-- Дата регистрации  -->
+        <div class="form-group">
+            <div class="control-label">
+                <xsl:value-of select="//captions/reg_date/@caption"/>
+            </div>
+            <div class="controls">
+                <input type="date" name="type" value="{fields/regdate}" class="span2"/>
+            </div>
+        </div>
+    </xsl:template>
+
 
     <xsl:template name="description">
         <!-- Описание -->
