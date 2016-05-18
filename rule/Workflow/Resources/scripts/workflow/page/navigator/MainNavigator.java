@@ -18,6 +18,8 @@ public class MainNavigator extends _DoPage {
 
 		_Outline common_outline = new _Outline(getLocalizedWord("workflow", session.getLang()), "common");
 		common_outline.addEntry(new _OutlineEntry(getLocalizedWord("office_memo", session.getLang()), "officememo-view"));
+		common_outline.addEntry(new _OutlineEntry(getLocalizedWord("incoming", session.getLang()), "incoming-view"));
+		common_outline.addEntry(new _OutlineEntry(getLocalizedWord("outgoing", session.getLang()), "outgoing-view"));
 
 		list.add(common_outline);
 
