@@ -32,4 +32,20 @@ public class Approval extends SecureAppEntity<UUID> {
 	@OneToMany()
 	private List<Block> blocks;
 
+	public ApprovalStatusType getStatus() {
+		return status;
+	}
+
+	public void setStatus(ApprovalStatusType status) {
+		this.status = status;
+	}
+
+	public List<Block> getBlocks() {
+		return blocks;
+	}
+
+	public void setBlocks(List<Block> blocks) {
+		this.blocks = blocks;
+	}
+
 }

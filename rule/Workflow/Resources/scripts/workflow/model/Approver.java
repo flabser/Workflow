@@ -1,5 +1,6 @@
 package workflow.model;
 
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -32,6 +33,9 @@ public class Approver extends SecureAppEntity<UUID> {
 	@Column(nullable = true, length = 7, unique = true)
 	private DecisionType type = DecisionType.UNKNOWN;
 
+	@Column(name = "decision_time")
+	private Date decisionTime;
+
 	@Column(name = "decision_comment")
 	private String decisionComment;
 
@@ -41,5 +45,53 @@ public class Approver extends SecureAppEntity<UUID> {
 
 	@Column(name = "is_current")
 	private boolean isCurrent;
+
+	public Long getApproverUser() {
+		return approverUser;
+	}
+
+	public void setApproverUser(Long approverUser) {
+		this.approverUser = approverUser;
+	}
+
+	public DecisionType getType() {
+		return type;
+	}
+
+	public void setType(DecisionType type) {
+		this.type = type;
+	}
+
+	public Date getDecisionTime() {
+		return decisionTime;
+	}
+
+	public void setDecisionTime(Date decisionTime) {
+		this.decisionTime = decisionTime;
+	}
+
+	public String getDecisionComment() {
+		return decisionComment;
+	}
+
+	public void setDecisionComment(String decisionComment) {
+		this.decisionComment = decisionComment;
+	}
+
+	public Block getBlock() {
+		return block;
+	}
+
+	public void setBlock(Block block) {
+		this.block = block;
+	}
+
+	public boolean isCurrent() {
+		return isCurrent;
+	}
+
+	public void setCurrent(boolean isCurrent) {
+		this.isCurrent = isCurrent;
+	}
 
 }

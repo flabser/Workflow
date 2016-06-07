@@ -52,6 +52,54 @@ public class Incoming extends SecureAppEntity<UUID> {
 	@Column(nullable = false)
 	private String summary = "";
 
+	public String getRegNumber() {
+		return regNumber;
+	}
+
+	public void setRegNumber(String regNumber) {
+		this.regNumber = regNumber;
+	}
+
+	public Date getAppliedRegDate() {
+		return appliedRegDate;
+	}
+
+	public void setAppliedRegDate(Date appliedRegDate) {
+		this.appliedRegDate = appliedRegDate;
+	}
+
+	public Organization getSender() {
+		return sender;
+	}
+
+	public void setSender(Organization sender) {
+		this.sender = sender;
+	}
+
+	public String getSenderRegNumber() {
+		return senderRegNumber;
+	}
+
+	public void setSenderRegNumber(String senderRegNumber) {
+		this.senderRegNumber = senderRegNumber;
+	}
+
+	public Date getSenderAppliedRegDate() {
+		return senderAppliedRegDate;
+	}
+
+	public void setSenderAppliedRegDate(Date senderAppliedRegDate) {
+		this.senderAppliedRegDate = senderAppliedRegDate;
+	}
+
+	public String getSummary() {
+		return summary;
+	}
+
+	public void setAttachments(List<Attachment> attachments) {
+		this.attachments = attachments;
+	}
+
 	public List<Attachment> getAttachments() {
 		return attachments;
 	}

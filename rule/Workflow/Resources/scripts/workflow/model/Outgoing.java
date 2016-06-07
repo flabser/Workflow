@@ -54,4 +54,36 @@ public class Outgoing extends SecureAppEntity<UUID> {
 		this.summary = summary;
 	}
 
+	public String getRegNumber() {
+		return regNumber;
+	}
+
+	public void setRegNumber(String regNumber) {
+		this.regNumber = regNumber;
+	}
+
+	public Date getAppliedRegDate() {
+		return appliedRegDate;
+	}
+
+	public void setAppliedRegDate(Date appliedRegDate) {
+		this.appliedRegDate = appliedRegDate;
+	}
+
+	public Organization getRecipient() {
+		return recipient;
+	}
+
+	public void setRecipient(Organization recipient) {
+		this.recipient = recipient;
+	}
+
+	public String getSummary() {
+		return summary;
+	}
+
+	public void setAttachments(List<Attachment> attachments) {
+		this.attachments = attachments;
+	}
+
 }

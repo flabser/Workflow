@@ -1,31 +1,5 @@
 package workflow.page.form;
 
-import com.exponentus.common.model.Attachment;
-import com.exponentus.env.EnvConst;
-import com.exponentus.env.Environment;
-import com.exponentus.exception.SecureException;
-import com.exponentus.localization.LanguageCode;
-import com.exponentus.scripting._Exception;
-import com.exponentus.scripting._POJOListWrapper;
-import com.exponentus.scripting._Session;
-import com.exponentus.scripting._Validation;
-import com.exponentus.scripting._WebFormData;
-import com.exponentus.scripting.actions._Action;
-import com.exponentus.scripting.actions._ActionBar;
-import com.exponentus.scripting.actions._ActionType;
-import com.exponentus.scripting.event._DoPage;
-import com.exponentus.server.Server;
-import com.exponentus.user.IUser;
-import com.exponentus.util.Util;
-import com.exponentus.webserver.servlet.UploadedFile;
-
-import workflow.dao.OfficeMemoDAO;
-import workflow.model.OfficeMemo;
-import workflow.model.Block;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.eclipse.persistence.exceptions.DatabaseException;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -36,8 +10,34 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import org.apache.commons.io.IOUtils;
+import org.eclipse.persistence.exceptions.DatabaseException;
+
+import com.exponentus.common.model.Attachment;
+import com.exponentus.env.EnvConst;
+import com.exponentus.env.Environment;
+import com.exponentus.exception.SecureException;
+import com.exponentus.localization.LanguageCode;
+import com.exponentus.scripting.IPOJOObject;
+import com.exponentus.scripting._Exception;
+import com.exponentus.scripting._POJOListWrapper;
+import com.exponentus.scripting._Session;
+import com.exponentus.scripting._Validation;
+import com.exponentus.scripting._WebFormData;
+import com.exponentus.scripting.actions._Action;
+import com.exponentus.scripting.actions._ActionBar;
+import com.exponentus.scripting.actions._ActionType;
+import com.exponentus.scripting.event._DoPage;
+import com.exponentus.user.IUser;
+import com.exponentus.util.Util;
+import com.exponentus.webserver.servlet.UploadedFile;
+
+import workflow.dao.OfficeMemoDAO;
+import workflow.model.OfficeMemo;
+
 public class OfficeMemoForm extends _DoPage {
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void doGET(_Session session, _WebFormData formData) {
 
@@ -52,17 +52,11 @@ public class OfficeMemoForm extends _DoPage {
 			String attachmentId = formData.getValueSilently("attachment");
 			if (!attachmentId.isEmpty() && entity.getAttachments() != null) {
 				Attachment att = entity.getAttachments().stream().filter(it -> it.getIdentifier().equals(attachmentId)).findFirst().get();
-
-				try {
-					String filePath = getTmpDirPath() + File.separator + Util.generateRandomAsText("qwertyuiopasdfghjklzxcvbnm", 10) + att.getRealFileName();
-					File attFile = new File(filePath);
-					FileUtils.writeByteArrayToFile(attFile, att.getFile());
-					showFile(filePath, att.getRealFileName());
-					Environment.fileToDelete.add(filePath);
-				} catch (IOException ioe) {
-					Server.logger.errorLogEntry(ioe);
+				if (showAttachment(att)) {
+					return;
+				} else {
+					setBadRequest();
 				}
-				return;
 			} else {
 				setBadRequest();
 			}
@@ -80,7 +74,7 @@ public class OfficeMemoForm extends _DoPage {
 				formFiles = (List<String>) obj;
 			}
 
-			List<UploadedFile> filesToPublish = new ArrayList<UploadedFile>();
+			List<IPOJOObject> filesToPublish = new ArrayList<IPOJOObject>();
 
 			for (String fn : formFiles) {
 				UploadedFile uf = (UploadedFile) session.getAttribute(fsId + "_file" + fn);
@@ -91,7 +85,7 @@ public class OfficeMemoForm extends _DoPage {
 				}
 				filesToPublish.add(uf);
 			}
-			addContent(new _POJOListWrapper(filesToPublish, session));
+			addContent(new _POJOListWrapper<IPOJOObject>(filesToPublish, session));
 		}
 
 		addContent(entity);
@@ -164,7 +158,6 @@ public class OfficeMemoForm extends _DoPage {
 	private _Validation validate(_WebFormData formData, LanguageCode lang) {
 		_Validation ve = new _Validation();
 
-
 		if (formData.getValueSilently("summary").isEmpty()) {
 			ve.addError("summary", "required", getLocalizedWord("field_is_empty", lang));
 		}
@@ -189,7 +182,8 @@ public class OfficeMemoForm extends _DoPage {
 		OfficeMemo entity = dao.findById(id);
 
 		List<Attachment> atts = entity.getAttachments();
-		List<Attachment> forRemove = atts.stream().filter(it -> attachmentId.equals(it.getIdentifier()) && it.getRealFileName().equals(attachmentName)).collect(Collectors.toList());
+		List<Attachment> forRemove = atts.stream()
+		        .filter(it -> attachmentId.equals(it.getIdentifier()) && it.getRealFileName().equals(attachmentName)).collect(Collectors.toList());
 		atts.removeAll(forRemove);
 
 		try {
