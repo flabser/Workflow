@@ -1,7 +1,7 @@
 package workflow.page.navigator;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.LinkedList;
 
 import com.exponentus.scripting._Session;
 import com.exponentus.scripting._WebFormData;
@@ -14,7 +14,7 @@ public class MainNavigator extends _DoPage {
 
 	@Override
 	public void doGET(_Session session, _WebFormData formData) {
-		List<IOutcomeObject> list = new ArrayList<IOutcomeObject>();
+		Collection<IOutcomeObject> list = new LinkedList<IOutcomeObject>();
 
 		_Outline common_outline = new _Outline(getLocalizedWord("workflow", session.getLang()), "common");
 		common_outline.addEntry(new _OutlineEntry(getLocalizedWord("office_memo", session.getLang()), "officememo-view"));
