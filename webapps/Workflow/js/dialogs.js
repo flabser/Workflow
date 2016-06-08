@@ -17,20 +17,28 @@
         balanceholderbin: ['bin']
     }
 */
-nbApp.defaultChoiceDialog = function(el, url, dataType, fields, templateId) {
+nbApp.defaultChoiceDialog = function(el, url, fields, isMulti, callback, message) {
     var form = nb.getForm(el);
     var dlg = nb.dialog.show({
         targetForm: form.name,
         fields: fields,
+        isMulti: isMulti,
         title: el.title,
         href: url,
-        dataType: dataType || 'html',
-        templateId: templateId,
+        dataType: 'json',
+        message: message,
+        onExecute: function() {
+            if (nb.setFormValues(dlg)) {
+                dlg.dialog('close');
+            }
+            callback && callback()
+        },
         buttons: {
             ok: {
                 text: nb.getText('ok'),
                 click: function() {
                     dlg[0].dialogOptions.onExecute();
+                    callback && callback();
                 }
             },
             cancel: {
@@ -88,4 +96,11 @@ nbApp.choiceStreet = function(el) {
     return this.defaultChoiceDialog(el, url, 'json', {
         streetid: ['id', 'name']
     });
+};
+
+nbApp.choiceRecipient = function(el, callback) {
+    var url = 'Provider?id=get-employees';
+    return this.defaultChoiceDialog(el, url,'json', {
+        recipient: ['id', 'name']
+    }, true, callback);
 };

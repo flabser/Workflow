@@ -73,4 +73,18 @@ $(function() {
             }
         });
     }
+
+   $('.js-select-recipient').on('click', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        nbApp.choiceRecipient(this, function() {
+        });
+    });
+    
+   $('.js-select-signer').on('click', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        nbApp.choiceRecipient(this, function() {
+        });
+    });
 });

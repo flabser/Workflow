@@ -57,10 +57,15 @@
             <div class="control-label">
                 <xsl:value-of select="//captions/signer/@caption"/>
             </div>
-            <div class="controls">
-                <select name="signer" class="span6">
-                    <xsl:apply-templates select="fields/signer" mode="selected_options"/>
-                </select>
+            <div class="controls span7">
+                <div>
+                    <span class="input  disabled js-select">
+
+                    </span>
+                    <button type="button" class="btn btn select-button js-select-signer">
+                        <span>+</span>
+                    </button>
+                </div>
             </div>
         </div>
     </xsl:template>
@@ -71,10 +76,15 @@
             <div class="control-label">
                 <xsl:value-of select="//captions/recipient/@caption"/>
             </div>
-            <div class="controls">
-                <select name="recipient" class="span6">
-                    <xsl:apply-templates select="fields/recipient" mode="selected_options"/>
-                </select>
+            <div class="controls span7">
+                <div>
+                    <span class="input  disabled js-select">
+
+                    </span>
+                    <button type="button" class="btn btn select-button js-select-recipient">
+                        <span>+</span>
+                    </button>
+                </div>
             </div>
         </div>
     </xsl:template>

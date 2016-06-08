@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rule mode="on">
+    <description>GetEmployeesAction</description>
+    <caching>NO_CACHING</caching>
+    <xsltfile>DEFAULT</xsltfile>
+    <element mode="ON" type="SCRIPT">
+        <name>view_content</name>
+        <events>
+            <doscript source="JAVA_CLASS">staff.page.action.GetEmployeesAction</doscript>
+        </events>
+    </element>
+</rule>
