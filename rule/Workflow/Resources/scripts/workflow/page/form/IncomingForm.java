@@ -33,9 +33,7 @@ import com.exponentus.util.Util;
 import com.exponentus.webserver.servlet.UploadedFile;
 
 import workflow.dao.IncomingDAO;
-import workflow.dao.OfficeMemoDAO;
 import workflow.model.Incoming;
-import workflow.model.OfficeMemo;
 
 public class IncomingForm extends _DoPage {
 
@@ -177,8 +175,8 @@ public class IncomingForm extends _DoPage {
 			return;
 		}
 
-		OfficeMemoDAO dao = new OfficeMemoDAO(session);
-		OfficeMemo entity = dao.findById(id);
+		IncomingDAO dao = new IncomingDAO(session);
+		Incoming entity = dao.findById(id);
 
 		List<Attachment> atts = entity.getAttachments();
 		List<Attachment> forRemove = atts.stream()
