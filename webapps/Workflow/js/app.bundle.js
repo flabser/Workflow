@@ -2972,24 +2972,20 @@ c(a.element).is("option")?(a.element.selected=!1,void this.$element.trigger("cha
 
 (function(){if(jQuery&&jQuery.fn&&jQuery.fn.select2&&jQuery.fn.select2.amd)var e=jQuery.fn.select2.amd;return e.define("select2/i18n/ru",[],function(){function e(e,t,n,r){return e%10<5&&e%10>0&&e%100<5||e%100>20?e%10>1?n:t:r}return{errorLoading:function(){return"Невозможно загрузить результаты"},inputTooLong:function(t){var n=t.input.length-t.maximum,r="Пожалуйста, введите на "+n+" символ";return r+=e(n,"","a","ов"),r+=" меньше",r},inputTooShort:function(t){var n=t.minimum-t.input.length,r="Пожалуйста, введите еще хотя бы "+n+" символ";return r+=e(n,"","a","ов"),r},loadingMore:function(){return"Загрузка данных…"},maximumSelected:function(t){var n="Вы можете выбрать не более "+t.maximum+" элемент";return n+=e(t.maximum,"","a","ов"),n},noResults:function(){return"Совпадений не найдено"},searching:function(){return"Поиск…"}}}),{define:e.define,require:e.require}})();
 /*
- Не допускать разбухания функции.
- Если нужны условия для какого та диалога, вынести в саму функцию диалога вызывающего эту функцию.
- Не писать условия в кнопке, типа если id == '?' то делать то-то; Вынасите в вызывающую функцию.
-
  @param fields
-    {
-        'целевое поле':
-            [
-                '* название поля модели от куда брать значение',
-                'название поля модели от куда брать значение для текста [data-input], иначе значение первого * [опционально]'
-            ]
-    }
-    @example
-    {
-        balanceholderid: ['id', 'name'],
-        balanceholderbin: ['bin']
-    }
-*/
+ {
+ 'целевое поле':
+ [
+ '* название поля модели от куда брать значение',
+ 'название поля модели от куда брать значение для текста [data-input], иначе значение первого * [опционально]'
+ ]
+ }
+ @example
+ {
+ balanceholderid: ['id', 'name'],
+ balanceholderbin: ['bin']
+ }
+ */
 nbApp.defaultChoiceDialog = function(el, url, fields, isMulti, callback, message) {
     var form = nb.getForm(el);
     var dlg = nb.dialog.show({
@@ -3025,59 +3021,50 @@ nbApp.defaultChoiceDialog = function(el, url, fields, isMulti, callback, message
     return dlg;
 };
 
-nbApp.choiceBalanceHolder = function(el) {
-    var url = 'Provider?id=get-organizations';
-    return this.defaultChoiceDialog(el, url, 'json', {
-        balanceholderid: ['id', 'name'],
+nbApp.defaultConfirmDialog = function(message, callback) {
+    var dlg = nb.dialog.warn({
+        message: message,
+        height: 200,
+        buttons: {
+            ok: {
+                text: nb.getText('ok'),
+                click: function() {
+                    dlg.dialog('close');
+                    callback && callback();
+                }
+            },
+            cancel: {
+                text: nb.getText('cancel'),
+                click: function() {
+                    dlg.dialog('close');
+                }
+            }
+        }
+    });
+    return dlg;
+};
+
+nbApp.choiceBalanceHolder = function(el, callback) {
+    var url = 'Provider?id=get-organizations&_fn=' + nb.getForm(el).name;
+    return this.defaultChoiceDialog(el, url, {
+        balanceholder: ['id', 'name'],
         balanceholderbin: ['bin']
-    });
-};
-
-nbApp.choiceCountries = function(el) {
-    var url = 'Provider?id=get-countries';
-    return this.defaultChoiceDialog(el, url, 'json', {
-        countryid: ['id', 'name']
-    });
-};
-
-nbApp.choiceRegion = function(el) {
-    var url = 'Provider?id=get-regions';
-    return this.defaultChoiceDialog(el, url, 'json', {
-        regionid: ['id', 'name']
-    });
-};
-
-nbApp.choiceDistrict = function(el) {
-    var regionId = nb.getForm(el).regionid.value;
-    var url = 'Provider?id=get-district&regionid=' + regionId;
-    return this.defaultChoiceDialog(el, url, 'json', {
-        districtid: ['id', 'name']
-    });
-};
-
-nbApp.choiceLocality = function(el) {
-    var districtId = nb.getForm(el).districtid.value;
-    var url = 'Provider?id=get-locality&districtid=' + districtId;
-    return this.defaultChoiceDialog(el, url, 'json', {
-        localityid: ['id', 'name']
-    });
-};
-
-nbApp.choiceStreet = function(el) {
-    var localityId = nb.getForm(el).localityid.value;
-    var url = 'Provider?id=get-street&localityid=' + localityId;
-    return this.defaultChoiceDialog(el, url, 'json', {
-        streetid: ['id', 'name']
-    });
+    }, false, callback);
 };
 
 nbApp.choiceRecipient = function(el, callback) {
-    var url = 'Provider?id=get-employees';
-    return this.defaultChoiceDialog(el, url,'json', {
-        recipient: ['id', 'name']
+    var url = 'Provider?id=get-employees&_fn=' + nb.getForm(el).name;
+    return this.defaultChoiceDialog(el, url, {
+        recipients: ['id', 'name']
     }, true, callback);
 };
 
+nbApp.choiceSigner = function(el, callback) {
+    var url = 'Provider?id=get-employees&_fn=signer_' + nb.getForm(el).name;
+    return this.defaultChoiceDialog(el, url, {
+        signer: ['id', 'name']
+    }, false, callback);
+};
 $(document).ready(function() {
     $('[data-toggle=filter]').on('change', function(event) {
         var targetSelector = $(this).data('target');
@@ -3220,94 +3207,7 @@ $(function() {
    $('.js-select-signer').on('click', function(e) {
         e.stopPropagation();
         e.preventDefault();
-        nbApp.choiceRecipient(this, function() {
+        nbApp.choiceSigner(this, function() {
         });
     });
 });
-
-$(document).ready(function() {
-    // reporttemplate form
-    $('form[name=reporttemplate]').on('submit', function(event) {
-        event.preventDefault();
-        $('[type=submit]', this).attr('disabled', true);
-
-        nb.xhrDownload({
-            url: (this.action || this.baseURI || location.href),
-            data: $(this).serialize(),
-            notify: nb.getText('wait_report', 'Подождите формируется отчет...'),
-            blockUi: true,
-            success: function() {
-                $('[type=submit]', event.target).attr('disabled', false);
-            }
-        });
-    });
-});
-
-nbApp.selectOptions = {
-    balanceholder: {
-        url: 'p?id=get-organizations',
-        fields: ['bin'],
-        onSelect: function(e) {
-            if (e.target.form) {
-                if (e.target.form.balanceholderbin) {
-                    e.target.form.balanceholderbin.value = (e.params.data) ? e.params.data.bin : '';
-                }
-                if (e.target.form.name == 'reporttemplate') {
-                    $('select[name=orgcategory]').val('').trigger('change');
-                }
-            }
-        }
-    },
-    orgcategory: {
-        url: 'p?id=get-org-categories',
-        onSelect: function(e) {
-            if (e.target.form && e.target.form.name == 'reporttemplate') {
-                $('select[name=balanceholder]').val('').trigger('change');
-            }
-        }
-    },
-    department: {
-        url: 'p?id=get-departments',
-        data: ['organization']
-    },
-    position: {
-        url: 'p?id=get-positions'
-    },
-    propertycode: {
-        url: 'p?id=get-property-codes'
-    },
-    receivingreason: {
-        url: 'p?id=get-receiving-reasons'
-    },
-    district: {
-        url: 'p?id=get-districts',
-        data: ['region']
-    },
-    street: {
-        url: 'p?id=get-streets',
-        data: ['locality'],
-        fields: ['streetId'],
-        cache: false,
-        minimumResultsForSearch: 0,
-        templateResult: function(item) {
-            if (!item.id || !item.streetId) {
-                return item.text;
-            }
-
-            var $item = $('<span>' + item.text + '</span><span class=street-id>' + item.streetId + '</span>');
-            return $item;
-        }
-    },
-    tags: {
-        url: 'p?id=get-tags',
-        fields: ['color'],
-        templateResult: function(item) {
-            if (!item.id || !item.color) {
-                return item.text;
-            }
-
-            var $item = $('<span style="color:' + item.color + '">' + item.text + '</span>');
-            return $item;
-        }
-    }
-};

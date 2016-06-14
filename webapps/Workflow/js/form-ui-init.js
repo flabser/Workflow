@@ -84,7 +84,7 @@ $(function() {
    $('.js-select-signer').on('click', function(e) {
         e.stopPropagation();
         e.preventDefault();
-        nbApp.choiceRecipient(this, function() {
+        nbApp.choiceSigner(this, function() {
         });
     });
 });
