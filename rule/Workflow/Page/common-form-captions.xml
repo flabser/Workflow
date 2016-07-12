@@ -26,7 +26,7 @@
     <caption name="writtenoff"/>
     <caption name="active"/>
     <caption name="inactive"/>
-    <caption name="summary">Краткое содержание</caption>
+    <caption name="summary"/>
     <caption name="signer"/>
     <caption name="incoming"/>
     <caption name="outgoing"/>

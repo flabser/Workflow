@@ -59,8 +59,7 @@
             </div>
             <div class="controls span7">
                 <div>
-                    <span class="input  disabled js-select">
-
+                    <span class="input  disabled js-select update-signer" data-input="signer">
                     </span>
                     <button type="button" class="btn btn select-button js-select-signer">
                         <span>+</span>
@@ -78,9 +77,9 @@
             </div>
             <div class="controls span7">
                 <div>
-                    <span class="input  disabled js-select">
+                    <ul class="input  disabled js-select update-recipients" data-input="recipients">
 
-                    </span>
+                    </ul>
                     <button type="button" class="btn btn select-button js-select-recipient">
                         <span>+</span>
                     </button>
