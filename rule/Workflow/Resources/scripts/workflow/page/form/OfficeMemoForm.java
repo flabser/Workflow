@@ -146,7 +146,7 @@ public class OfficeMemoForm extends _DoPage {
 		} catch (SecureException e) {
 			setError(e);
 		} catch (_Exception | DatabaseException | IOException e) {
-			error(e);
+			logError(e);
 			setBadRequest();
 		}
 	}
