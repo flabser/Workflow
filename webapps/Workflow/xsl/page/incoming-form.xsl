@@ -41,7 +41,7 @@
                                     <xsl:value-of select="//captions/summary/@caption"/>
                                 </div>
                                 <div class="controls">
-                                    <textarea type="text" name="body" value="{fields/summary}" class="span8">
+                                    <textarea type="text" name="summary" value="{fields/summary}" class="span8">
                                        <xsl:value-of select="fields/summary"/>
                                     </textarea>
                                 </div>
@@ -51,8 +51,8 @@
                                     <xsl:value-of select="//captions/content/@caption"/>
                                 </div>
                                 <div class="controls">
-                                    <textarea type="text" name="body" value="{fields/body}" class="span8">
-                                       <xsl:value-of select="fields/body"/>
+                                    <textarea type="text" name="content" value="{fields/content}" class="span8">
+                                       <xsl:value-of select="fields/content"/>
                                     </textarea>
                                 </div>
                             </div>
