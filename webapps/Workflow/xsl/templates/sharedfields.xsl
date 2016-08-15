@@ -96,7 +96,7 @@
                 <xsl:value-of select="//captions/reg_number/@caption"/>
             </div>
             <div class="controls">
-                <input type="text" name="type" value="{fields/regnumber}" class="span2"/>
+                <input type="text" name="regnumber" value="{fields/regnumber}" class="span2"/>
             </div>
         </div>
     </xsl:template>
@@ -108,7 +108,7 @@
                 <xsl:value-of select="//captions/reg_date/@caption"/>
             </div>
             <div class="controls">
-                <input type="date" name="type" value="{fields/regdate}" class="span2"/>
+                <input type="date" name="regdate" value="{fields/regdate}" class="span2"/>
             </div>
         </div>
     </xsl:template>

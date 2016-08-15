@@ -13,7 +13,7 @@ $(function() {
             'type': 'text',
             'data-type': 'date',
             /*'readonly': 'readonly',*/
-        }).datepicker({ dateFormat: nb.options.dateFormat });
+        }).datepicker({ dateFormat:'dd.mm.yy' });
     });
 
     // init action
