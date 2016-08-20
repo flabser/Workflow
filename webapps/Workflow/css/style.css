@@ -33,6 +33,32 @@ form[data-edit=false] [data-upload] {
 
 .js-select{
     width:90%;
+    display:inline-block;
+    padding:  0;
+    margin: 0;
+}
+
+.js-select li {
+    background: white;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    box-sizing: border-box;
+    color: #000;
+    display: inline-block;
+    min-height: 34px;
+    font-size: 1em;
+    max-width: 100%;
+    outline: 0;
+    padding: 7px;
+    position: relative;
+    vertical-align: middle;
+    width: 100%;
+    margin-bottom: 5px;
+
+}
+
+.js-select > li:last-child{
+    margin-bottom: 0px;
 }
 
 .select-button{

@@ -91,6 +91,8 @@ public class OfficeMemo extends SecureAppEntity<UUID> {
 		return summary;
 	}
 
+	public Date getRegDate() {return regDate;	}
+
 	public String getContent() {
 		return content;
 	}

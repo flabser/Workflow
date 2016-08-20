@@ -120,6 +120,8 @@ public class OfficeMemoForm extends _DoPage {
 
 			entity.setContent(formData.getValue("content"));
 			entity.setSummary(formData.getValue("summary"));
+			entity.setRegNumber(formData.getValue("regnumber"));
+			entity.setAppliedRegDate(formData.getDateSilently("regdate"));
 
 			String[] fileNames = formData.getListOfValuesSilently("fileid");
 			if (fileNames.length > 0) {

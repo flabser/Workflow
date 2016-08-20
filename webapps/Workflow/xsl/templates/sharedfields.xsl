@@ -59,8 +59,9 @@
             </div>
             <div class="controls span7">
                 <div>
-                    <span class="input  disabled js-select update-signer" data-input="signer">
-                    </span>
+                    <ul class="disabled js-select update-signer" data-input="signer">
+                        <li></li>
+                    </ul>
                     <button type="button" class="btn btn select-button js-select-signer">
                         <span>+</span>
                     </button>
@@ -77,8 +78,8 @@
             </div>
             <div class="controls span7">
                 <div>
-                    <ul class="input  disabled js-select update-recipients" data-input="recipients">
-
+                    <ul class="disabled js-select update-recipients" style="" data-input="recipients">
+                        <li></li>
                     </ul>
                     <button type="button" class="btn btn select-button js-select-recipient">
                         <span>+</span>
@@ -95,7 +96,7 @@
                 <xsl:value-of select="//captions/reg_number/@caption"/>
             </div>
             <div class="controls">
-                <input type="text" name="type" value="{fields/regnumber}" class="span2"/>
+                <input type="text" name="regnumber" value="{fields/regnumber}" class="span2"/>
             </div>
         </div>
     </xsl:template>
@@ -107,7 +108,7 @@
                 <xsl:value-of select="//captions/reg_date/@caption"/>
             </div>
             <div class="controls">
-                <input type="date" name="type" value="{fields/regdate}" class="span2"/>
+                <input type="date" name="regdate" value="{fields/regdate}" class="span2"/>
             </div>
         </div>
     </xsl:template>
