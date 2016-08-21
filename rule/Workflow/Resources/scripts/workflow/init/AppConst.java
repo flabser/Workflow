@@ -9,6 +9,6 @@ public class AppConst {
 	public static String NAME_RUS = "Служебные записки";
 	public static String NAME_KAZ = "Служебные записки";
 	public static AppCode CODE = AppCode.WORKSPACE;
-	public static String DEFAULT_URL = "p?id=officememo-view";
+	public static String DEFAULT_PAGE = "officememo-view";
 	public static String FT_INDEX_SCOPE = "";
 }
